@@ -1,5 +1,7 @@
 # FinTrack — Finance Dashboard (Candidate Submission)
 
+### [Live Demo: zorvyn-inten-project.vercel.app](https://zorvyn-inten-project.vercel.app)
+
 A React-based finance tracker providing a centralized view of income, expenses, and patterns.
 
 ## Technical Architecture
