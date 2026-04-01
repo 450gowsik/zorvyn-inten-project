@@ -1,36 +1,32 @@
-# FinTrack — Finance Dashboard (Intern Submission)
+# FinTrack — Finance Dashboard (Candidate Submission)
 
 A React-based finance tracker providing a centralized view of income, expenses, and patterns.
 
 ## Technical Architecture
 
-### Component Structure
-- **Root (`App`)**: Manages global state (transactions, user role, navigation).
-- **Core Views**: `DashboardPage`, `TransactionsPage`, `InsightsPage`.
-- **UI Components**: Sidebar with persistent navigation, Header with role simulation, Modals for data entry.
-- **Micro-Components**: Functional badges, type pills, and custom chart tooltips for consistent UI.
+### 1. Modular Component Structure
+The codebase is refactored into a scalable directory structure:
+- **`src/components/UI.jsx`**: Global styling constants (HSL tokens) and shared atomic components (Badge, TypePill, Input).
+- **`src/components/Layout.jsx`**: Structural components including a state-aware Sidebar and a multi-role Header.
+- **`src/components/Dashboard.jsx`**: Visualization logic using Recharts (Area/Pie) for financial health metrics.
+- **`src/components/Transactions.jsx`**: Record management featuring search, multi-filter, and sorting logic.
+- **`src/components/Insights.jsx`**: Data parsing engine for automated pattern detection and qualitative feedback.
 
-### State & Logic
-- **State Management**: Uses React's `useState` for transaction persistence and `useMemo` for high-performance filtering/sorting of records.
-- **Routing**: Internal state-based page switching for a seamless SPA experience.
-- **Data Visualization**: Implements `Recharts` for responsive, SVG-based Area, Pie, and Bar charts.
+### 2. State & Performance
+- **Single Source of Truth**: Global state managed at the root (`App.jsx`) to ensure synchronization across metrics and reports.
+- **Optimized Rendering**: Uses `useMemo` for derived datasets (filtering/sorting) to maintain high performance with larger transaction lists.
+- **SVG Viz**: Leverages **Recharts** for hardware-accelerated, responsive data visualization.
 
-### Performance & Design
-- **Optimized Rendering**: Filters and sorters only re-calculate on state changes, preventing unnecessary list re-renders.
-- **Design System**: High-contrast dark theme with utility-first HSL tokens. Focus on numerical readability via JetBrains Mono.
-- **Graceful States**: Handles empty datasets and loading states with informative placeholders.
+## Technical Signals
 
-## Features
+- **Component Decoupling**: View logic is separated from UI primitives.
+- **Role-Based Logic**: Simulated `Admin` vs `Viewer` states to demonstrate conditional rendering and access control.
+- **Numerical Precision**: Uses `Intl.NumberFormat` for currency and JetBrains Mono for perfect digit alignment.
 
-- **Summary Dashboard**: Key metrics (Balance, Savings Rate) with trend indicators.
-- **Transaction Engine**: Searchable, filterable list with Admin-only CRUD actions (Add/Edit/Delete).
-- **Insights Engine**: Automated pattern detection (Top Category, Best Month, Savings qualitative feedback).
-- **Export**: Dynamic CSV generator for filtered transaction downloads.
-
-## Deployment & Setup
+## Setup
 
 1. `npm install`
 2. `npm run dev`
 
 ---
-*Internship Candidate: Gowsikbabu Babu*
+*Candidate: Gowsikbabu Babu*
