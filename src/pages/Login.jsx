@@ -13,15 +13,17 @@ export default function Login() {
   // If already logged in, skip login page
   if (user) return <Navigate to="/dashboard" replace />;
 
+  const isInvalid = !form.name.trim() || !form.email.trim();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!form.name || !form.email) {
-      setError("All fields are required");
+    if (isInvalid) {
+      setError("Please enter required fields");
       return;
     }
     setError("");
     login(form);
-    navigate("/dashboard");
+    navigate("/");
   };
 
   return (
@@ -40,10 +42,27 @@ export default function Login() {
 
         <form onSubmit={handleSubmit}>
           <Label>Full Name</Label>
-          <Input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })} placeholder="Enter your name" />
+          <Input 
+            value={form.name} 
+            onChange={e => setForm({ ...form, name: e.target.value })} 
+            placeholder="Enter your name" 
+            style={{ 
+              borderColor: error && !form.name ? C.red : C.border,
+              marginBottom: 14 
+            }}
+          />
 
           <Label>Email Address</Label>
-          <Input type="email" value={form.email} onChange={e => setForm({ ...form, email: e.target.value })} placeholder="name@company.com" />
+          <Input 
+            type="email" 
+            value={form.email} 
+            onChange={e => setForm({ ...form, email: e.target.value })} 
+            placeholder="name@company.com" 
+            style={{ 
+              borderColor: error && !form.email ? C.red : C.border,
+              marginBottom: 14 
+            }}
+          />
 
           <Label>Access Role</Label>
           <Select value={form.role} onChange={e => setForm({ ...form, role: e.target.value })}>
@@ -53,11 +72,21 @@ export default function Login() {
 
           {error && <div style={{ color: C.red, fontSize: 12, marginBottom: 16, textAlign: "center" }}>{error}</div>}
 
-          <button type="submit" style={{
-            width: "100%", padding: "12px", background: C.gold, border: "none",
-            borderRadius: 8, color: "#1a1200", fontSize: 14, fontWeight: 700,
-            cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 8
-          }}>
+          <button 
+            type="submit" 
+            disabled={isInvalid}
+            style={{
+              width: "100%", padding: "12px", 
+              background: isInvalid ? C.surface2 : C.gold, 
+              border: "none",
+              borderRadius: 8, 
+              color: isInvalid ? C.muted : "#1a1200", 
+              fontSize: 14, fontWeight: 700,
+              cursor: isInvalid ? "not-allowed" : "pointer", 
+              display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
+              transition: "all 0.2s"
+            }}
+          >
             <LogIn size={16} /> Access Dashboard
           </button>
         </form>

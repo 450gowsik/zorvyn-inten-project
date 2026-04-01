@@ -78,10 +78,9 @@ export default function App() {
 
           {/* Protected Routes */}
           <Route element={<ProtectedRoute><DashboardLayout txs={txs} setTxs={setTxs}/></ProtectedRoute>}>
-            <Route path="/dashboard" element={<DashboardPage txs={txs} monthlyData={MONTHLY} catEmoji={catEmoji}/>} />
+            <Route path="/" element={<DashboardPage txs={txs} monthlyData={MONTHLY} catEmoji={catEmoji}/>} />
             <Route path="/transactions" element={<TransactionsPage txs={txs} setTxs={setTxs} categories={CATEGORIES} />} />
             <Route path="/insights" element={<InsightsPage txs={txs}/>} />
-            <Route path="/" element={<Navigate to="/dashboard" replace />} />
           </Route>
 
           {/* Fallback */}

@@ -12,7 +12,7 @@ export function Sidebar({ page }) {
   const navigate = useNavigate();
 
   const nav = [
-    { id: "dashboard", label: "Dashboard", Icon: LayoutDashboard, path: "/dashboard" },
+    { id: "dashboard", label: "Dashboard", Icon: LayoutDashboard, path: "/" },
     { id: "transactions", label: "Transactions", Icon: CreditCard, path: "/transactions" },
     { id: "insights", label: "Insights", Icon: TrendingUp, path: "/insights" },
   ];
