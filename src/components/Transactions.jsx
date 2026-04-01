@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import { Search, Plus, Edit2, Trash2, X, Download, AlertCircle, ChevronUp, ChevronDown } from "lucide-react";
 import { C, Badge, TypePill, Label, Input, Select } from "./UI";
 import { PageTitle } from "./Layout";
+import { useAuth } from "../context/AuthContext";
 
 const fmtD = d => new Date(d).toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
 
@@ -38,7 +39,9 @@ export function TxModal({ tx, onClose, onSave, categories }) {
   );
 }
 
-export function TransactionsPage({ txs, setTxs, role, categories }) {
+export function TransactionsPage({ txs, setTxs, categories }) {
+  const { user } = useAuth();
+  const role = user?.role || "viewer";
   const [search, setSearch] = useState("");
   const [fType, setFType] = useState("all");
   const [fCat, setFCat] = useState("all");
