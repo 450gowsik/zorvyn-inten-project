@@ -1,26 +1,36 @@
-# FinTrack — Finance Dashboard UI
+# FinTrack — Finance Dashboard (Intern Submission)
 
-FinTrack is a clean, interactive Finance Dashboard built with React. It enables users to track income and expenses, explore transaction history, and surface meaningful insights from their financial data.
+A React-based finance tracker providing a centralized view of income, expenses, and patterns.
+
+## Technical Architecture
+
+### Component Structure
+- **Root (`App`)**: Manages global state (transactions, user role, navigation).
+- **Core Views**: `DashboardPage`, `TransactionsPage`, `InsightsPage`.
+- **UI Components**: Sidebar with persistent navigation, Header with role simulation, Modals for data entry.
+- **Micro-Components**: Functional badges, type pills, and custom chart tooltips for consistent UI.
+
+### State & Logic
+- **State Management**: Uses React's `useState` for transaction persistence and `useMemo` for high-performance filtering/sorting of records.
+- **Routing**: Internal state-based page switching for a seamless SPA experience.
+- **Data Visualization**: Implements `Recharts` for responsive, SVG-based Area, Pie, and Bar charts.
+
+### Performance & Design
+- **Optimized Rendering**: Filters and sorters only re-calculate on state changes, preventing unnecessary list re-renders.
+- **Design System**: High-contrast dark theme with utility-first HSL tokens. Focus on numerical readability via JetBrains Mono.
+- **Graceful States**: Handles empty datasets and loading states with informative placeholders.
 
 ## Features
 
-- **Dashboard Overview**: Summary cards and interactive charts for monthly cash flow and spending distribution.
-- **Transactions Management**: Full list with search, filter, and sort capabilities.
-- **Role-Based Access**: Admins can add, edit, and delete transactions.
-- **Insights**: Patterns and observations driven by your data.
+- **Summary Dashboard**: Key metrics (Balance, Savings Rate) with trend indicators.
+- **Transaction Engine**: Searchable, filterable list with Admin-only CRUD actions (Add/Edit/Delete).
+- **Insights Engine**: Automated pattern detection (Top Category, Best Month, Savings qualitative feedback).
+- **Export**: Dynamic CSV generator for filtered transaction downloads.
 
-## Tech Stack
+## Deployment & Setup
 
-- **Framework**: React 18
-- **Charts**: Recharts
-- **Icons**: Lucide React
-- **Build Tool**: Vite
-
-## Getting Started
-
-1. Clone the repo
-2. Install dependencies: `npm install`
-3. Run dev server: `npm run dev`
+1. `npm install`
+2. `npm run dev`
 
 ---
-*Built for the Zorvyn FinTech Intern Project*
+*Internship Candidate: Gowsikbabu Babu*
